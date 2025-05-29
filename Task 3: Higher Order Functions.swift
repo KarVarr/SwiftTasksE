@@ -6,28 +6,19 @@ let books = [
 ["title": "To Kill a Mockingbird", "author": "Harper Lee", "year": 1960, "price": 20, "genre": ["Classic", "Drama"]]
 ]
 
-var discountedPrices: [Double] = []
-
-discountedPrices = books.compactMap { Double($0["price"] as? Int ?? 0) * 0.9}
+let discountedPrices: [Double] = books.compactMap { Double($0["price"] as? Int ?? 0) * 0.9 }
 print(discountedPrices)
 
 
-var booksPostedAfter2000: [String] = []
-booksPostedAfter2000 = books.filter { $0["year"] as? Int ?? 0 > 2000}.compactMap {$0["title"] as? String}
-
+let booksPostedAfter2000: [String] = books.filter { $0["year"] as? Int ?? 0 > 2000 }.compactMap { $0["title"] as? String }
 print(booksPostedAfter2000)
 
 
-var genres: [[String]] = []
-var allGenres: Set<String> = []
-genres = books.compactMap { $0["genre"] as? [String]}
-allGenres = Set(genres.flatMap {$0})
-
+let genres: [[String]] = books.compactMap { $0["genre"] as? [String] }
+let allGenres: Set<String> = Set(genres.flatMap { $0 })
 print(genres)
 print(allGenres)
 
 
-var totalCost: Int
-totalCost = books.compactMap { $0["price"] as? Int}.reduce (0,+)
-
+let totalCost: Int = books.compactMap { $0["price"] as? Int }.reduce (0,+)
 print(totalCost)
